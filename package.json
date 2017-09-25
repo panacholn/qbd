@@ -1,0 +1,22 @@
+{
+  "name": "stationary-distribution-solver",
+  "version": "1.0.0",
+  "description": "stationary distribution solver",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panacholn/stationary-distribution-solver.git"
+  },
+  "author": "Panacholn Pongsamrithphol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panacholn/stationary-distribution-solver/issues"
+  },
+  "homepage": "https://github.com/panacholn/stationary-distribution-solver#readme",
+  "dependencies": {
+    "console.table": "^0.9.1"
+  }
+}
