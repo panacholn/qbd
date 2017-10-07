@@ -4,38 +4,42 @@ const { compare, addmt, mulmt } = require('./commonfn')
 const x = 0.2 //alpha
 const y = 0.6 //beta
 const z = 0.7 //gamma
+const ix = 1 - x
+const iy = 1 - y
+const iz = 1 - z
 
 const B = [
-  [1-x, 0, 0],
-  [z*(1-x), (1-z)*(1-x), 0],
-  [0, z*(1-x), (1-z)*(1-x)],
+  [   ix,     0,      0],
+  [ z*ix, iz*ix,      0],
+  [    0,  z*ix,  iz*ix],
 ]
 const C = [
-  [x, 0, 0],
-  [z*x, (1-z)*x, 0],
-  [0, z*x, (1-z)*x],
+  [   x,    0,    0],
+  [ z*x, iz*x,    0],
+  [   0,  z*x, iz*x],
 ]
 const A0 = [
-  [x*(1-y), 0, 0],
-  [x*(1-y)*z, x*(1-y)*(1-z), 0],
-  [0, x*(1-y)*x, x*(1-z)],
+  [   x*iy,        0,     0],
+  [ x*iy*z,  x*iy*iz,     0],
+  [      0,   x*iy*x,  x*iz],
 ]
 const A1 = [
-  [(1-x)*(1-y), x*y, 0],
-  [(1-x)*(1-y)*z, ((1-x)*(1-y)*(1-z))+(x*y*z), x*y*(1-z)],
-  [0, (1-x)*(1-y)*z, ((1-x)*(1-y)*(1-z))+(x*y*z)],
+  [   ix*iy,                x*y,                   0],
+  [ ix*iy*z, (ix*iy*iz)+(x*y*z),              x*y*iz],
+  [       0,            ix*iy*z,  (ix*iy*iz)+(x*y*z)],
 ]
 const A2 = [
-  [0, (1-x)*y, 0],
-  [0, (1-x)*y*z, (1-x)*y*(1-z)],
-  [0, 0, x*(1-y)*z],
+  [0,   ix*y,       0],
+  [0, ix*y*z, ix*y*iz],
+  [0,      0,  x*iy*z],
 ]
 
 // --------------------------- find R --------------------------- //
 let base = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 let R = A0.slice()
-let i = 0
+let i = 1
 while (compare(base, R)) {
+  console.table(R)
   base = R.slice()
   let buffer = addmt(A0, addmt(mulmt(R, A1), mulmt(R, mulmt(R, A2))))
   R = buffer.slice()
