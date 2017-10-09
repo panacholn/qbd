@@ -18,6 +18,14 @@ const addmt = (a, b) => {
   });
 }
 
+const submt = (a, b) => {
+  return a.map(function(n, i){
+    return n.map(function(o, j){
+      return o - b[i][j];
+    });
+  });
+}
+
 const mulmt = (a, b) => {
   let result = [];
   for (let i = 0; i < a.length; i++) {
@@ -33,6 +41,10 @@ const mulmt = (a, b) => {
   return result;
 }
 
+const transposemt = m => m[0].map((x,i) => m.map(x => x[i]))
+
 exports.compare = compare
 exports.addmt = addmt
 exports.mulmt = mulmt
+exports.submt = submt
+exports.transposemt = transposemt

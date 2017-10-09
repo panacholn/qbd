@@ -1,8 +1,5 @@
 ### How to download
-Download from https://github.com/panacholn/stationary-distribution-solver
+Download from https://github.com/panacholn/qbd
 
 ### How to run
-node index.js
-
-### How to edit input
-Change value in mc array in file index.js
+node ./index.js
